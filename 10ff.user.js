@@ -9,10 +9,14 @@
 
 (function() {
     'use strict';
+    var taran = false;
     var realWPM;
     $(document).keydown(function (k)
     {
         realWPM = Math.round((error_keystrokes / 5) / ((60.01 - countdown) / 60));
+        if((realWPM > 1000 || taran) || realWPM < 0){
+            realWPM = 0;
+        }
 
         $('#preview').html("<font size='+3'><b>WPM:</b> " +
         realWPM + "<br><b>Key Strokes:</b> " +
