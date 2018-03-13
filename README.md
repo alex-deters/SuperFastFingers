@@ -1,5 +1,5 @@
 # SuperFastFingers
-Userscript for 10fastfingers live speed and more, original live speed script provided by @Alfredo on the 10fastfingers discord server
+Userscript for 10fastfingers live speed and more, original live speed script provided by @Alfredo on the 10fastfingers discord server.
 
 ## Features
 
