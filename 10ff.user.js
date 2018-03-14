@@ -68,6 +68,7 @@
     var wordIndex = 0;
     var correctWords;
     var realWPM;
+    var wordList;
 
     $("#user-online-box").html("<a id='settingsSFF' href='javascript:void()'>SuperFastFingers settings</a>");
     $("#settingsSFF").click(function(){
@@ -83,8 +84,8 @@
             taran = (GM_config.get('taran') == 'true');
             m00p = (GM_config.get('m00p') == 'true');
             if(window.location.href.indexOf("competition") > -1) {
-                if(user_input_stream.split(" ").length == 2){
-                    row_counter--;
+                if(word_pointer == 0){
+                    // row_counter = 0;
                     previous_position_top = p.top;
                     var zeilensprung_hoehe = (-1 * line_height) * row_counter;
                     $("#row1").css('top', zeilensprung_hoehe+"px"); //bei einem zeilensprung wird der text um "line_height" verschoben
@@ -94,12 +95,14 @@
                     keystrokes = 0;
                     correctWords = 0;
                     wordIndex = 0;
+                    wordList = word_string.split("|");
                 }
-                if(user_input_stream.split(" ")[wordIndex] == words[wordIndex]){
-                    keystrokes += words[wordIndex].length;
+
+                if(user_input_stream.split(" ")[wordIndex - 1] == wordList[wordIndex - 1]){
+                    keystrokes += wordList[wordIndex].length;
                     correctWords++;
                 }else{
-                    keystrokes -= words[wordIndex].length;
+                    keystrokes -= wordList[wordIndex].length;
                 }
                 wordIndex++;
             }else{
@@ -133,5 +136,6 @@
         }
     });
 })();
+
 
 
