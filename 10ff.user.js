@@ -14,31 +14,41 @@
     GM_config.init(
         {
             'id': 'SFF-conf',
+            'title': 'SuperFastFingers Settings<br><span style="font-size: 13px">Script by AFriendlyTrashcan (@7v1)</span>',
             'fields':
             {
+                'masterSwitch':
+                {
+                    'label': 'Enable all features',
+                    'type': 'select',
+                    'options': ['enable','disable'],
+                    'section': ['Enable/Disable features'],
+                    'default': 'enable'
+                },
                 'aagColors':
                 {
                     'label': 'Enable live WPM colors',
                     'type': 'select',
-                    'options': ['true','false'],
-                    'default': 'true'
+                    'options': ['enable','disable'],
+                    'default': 'enable'
                 },
                 'greatWPM':
                 {
-                    'label': 'Choose what WPM triggers great background color',
-                    'type': 'text',
+                    'label': 'Choose what WPM triggers the great background color',
+                    'type': 'int',
+                    'section': ['WPM Colors'],
                     'default': '150'
                 },
                 'goodWPM':
                 {
-                    'label': 'Choose what WPM triggers good background color',
-                    'type': 'text',
+                    'label': 'Choose what WPM triggers the good background color',
+                    'type': 'int',
                     'default': '140'
                 },
                 'normalWPM':
                 {
-                    'label': 'Choose what WPM triggers normal background color',
-                    'type': 'text',
+                    'label': 'Choose what WPM triggers the normal background color',
+                    'type': 'int',
                     'default': '130'
                 },
                 'taran':
@@ -46,6 +56,7 @@
                     'label': 'Enable WPM >1000',
                     'type': 'select',
                     'options': ['true','false'],
+                    'section': ['Debug'],
                     'default': 'false'
                 },
                 'm00p':
@@ -55,9 +66,11 @@
                     'options': ['true','false'],
                     'default': 'false'
                 }
+
             }
     });
 
+    var masterSwitch = false;
     var aagColors = true;
     var greatWPM = 150;
     var goodWPM = 140;
@@ -76,13 +89,15 @@
     });
 
     $(document).keydown(function (k){
-        if(k.which == 32){
-            aagColors = (GM_config.get('aagColors') == 'true');
+        masterSwitch = (GM_config.get('masterSwitch') == 'enable');
+        if(k.which == 32 && masterSwitch){
+            aagColors = (GM_config.get('aagColors') == 'enable');
             greatWPM = GM_config.get('greatWPM');
             goodWPM = GM_config.get('goodWPM');
             normalWPM = GM_config.get('normalWPM');
             taran = (GM_config.get('taran') == 'true');
             m00p = (GM_config.get('m00p') == 'true');
+
             if(window.location.href.indexOf("competition") > -1) {
                 if(word_pointer == 0){
                     // row_counter = 0;
@@ -132,10 +147,9 @@
                 }else{
                     $("#preview").css({"backgroundColor":"red","color":"black"});
                 }
+            }else{
+                $("#preview").css({"backgroundColor":"white","color":"black"});
             }
         }
     });
 })();
-
-
-
