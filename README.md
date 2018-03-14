@@ -16,4 +16,4 @@ First get either, if you don't have one already
 
 [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) for firefox.
 
-Then click [here](https://github.com/AFriendlyTrashcan/SuperFastFingers/raw/6bdd48985a10c47aad2f3f67091439215ee0a072/10ff.user.js), and hit install or reinstall. If the installation screen doesn't show up you may have not installed the above extensions correctly, or may need to restart your browser.
+Then click [here](https://github.com/AFriendlyTrashcan/SuperFastFingers/raw/97fdf1d05b0cc1b9744df48c96a69d61b9ed7b90/10ff.user.js), and hit install or reinstall. If the installation screen doesn't show up you may have not installed the above extensions correctly, or may need to restart your browser.
